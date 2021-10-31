@@ -1,0 +1,59 @@
+﻿@model MOVIE_BOOKING_CORE.Models.MovieTicket
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>MovieTicket</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="MovieName" class="control-label"></label>
+                <input asp-for="MovieName" class="form-control" />
+                <span asp-validation-for="MovieName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MovieDescription" class="control-label"></label>
+                <input asp-for="MovieDescription" class="form-control" />
+                <span asp-validation-for="MovieDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MoviePoster" class="control-label"></label>
+                <input asp-for="MoviePoster" class="form-control" />
+                <span asp-validation-for="MoviePoster" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SilverPrice" class="control-label"></label>
+                <input asp-for="SilverPrice" class="form-control" />
+                <span asp-validation-for="SilverPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GoldPrice" class="control-label"></label>
+                <input asp-for="GoldPrice" class="form-control" />
+                <span asp-validation-for="GoldPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PlatinumPrice" class="control-label"></label>
+                <input asp-for="PlatinumPrice" class="form-control" />
+                <span asp-validation-for="PlatinumPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

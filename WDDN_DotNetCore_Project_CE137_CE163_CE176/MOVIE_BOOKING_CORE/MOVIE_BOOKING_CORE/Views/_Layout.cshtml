@@ -1,0 +1,26 @@
+﻿@inject SignInManager<IdentityUser>  signInManager;
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    
+    <nav>
+        <ul class="navbar-nav">
+           
+        </ul>
+
+    </nav>
+
+
+    <div>
+        @RenderBody()
+    </div>
+
+    @RenderSection("Scripts", required: false);
+
+</body>
+</html>
