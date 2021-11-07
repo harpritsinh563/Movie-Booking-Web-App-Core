@@ -33,6 +33,7 @@ namespace MOVIE_BOOKING_CORE
             services.AddRazorPages();
             services.AddControllersWithViews();
             services.AddScoped<IMovieTicketRepository, SQLMovieTicketRepository>();
+            services.AddScoped<IMovieBookingRepository, SQLMovieBookingRepository>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -61,8 +62,6 @@ namespace MOVIE_BOOKING_CORE
                  {
                      await context.Response.WriteAsync("MovieTicket Booking");
                  });
-
-
             });
         }
     }

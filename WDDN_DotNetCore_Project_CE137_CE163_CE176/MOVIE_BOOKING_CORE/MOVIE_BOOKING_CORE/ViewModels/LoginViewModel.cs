@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
-
 namespace MOVIE_BOOKING_CORE.ViewModels
 {
     public class LoginViewModel
@@ -20,7 +19,5 @@ namespace MOVIE_BOOKING_CORE.ViewModels
 
         [Display(Name ="Keep me logged in")]
         public bool rememberMe { get; set; }
-
-
     }
 }

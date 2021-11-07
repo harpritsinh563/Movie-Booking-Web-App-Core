@@ -51,7 +51,11 @@ namespace MOVIE_BOOKING_CORE.Controllers
             return View(movie_ticket);
         }
 
-        
+        [HttpGet]
+        public IActionResult Book(int id)
+        {
+            return RedirectToAction("Create", "MovieBooking",new {Id = id });
+        }
 
         [HttpGet]
 
@@ -73,7 +77,8 @@ namespace MOVIE_BOOKING_CORE.Controllers
                 movieTicket.SilverPrice = MovieTicketChanges.SilverPrice;
                 movieTicket.GoldPrice = MovieTicketChanges.GoldPrice;
                 movieTicket.PlatinumPrice = MovieTicketChanges.PlatinumPrice;
-
+                movieTicket.startDate = MovieTicketChanges.startDate;
+                
                 MovieTicket updatedMovTicket = _movieticketrepo.Update(movieTicket);
 
                 return RedirectToAction("index");

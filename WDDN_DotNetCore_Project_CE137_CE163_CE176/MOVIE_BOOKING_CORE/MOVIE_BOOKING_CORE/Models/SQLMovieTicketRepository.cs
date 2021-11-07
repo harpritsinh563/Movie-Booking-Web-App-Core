@@ -53,7 +53,7 @@ namespace MOVIE_BOOKING_CORE.Models
                 movieTicket.SilverPrice = MovieTicketChanges.SilverPrice;
                 movieTicket.GoldPrice = MovieTicketChanges.GoldPrice;
                 movieTicket.PlatinumPrice = MovieTicketChanges.PlatinumPrice;
-
+                movieTicket.startDate = MovieTicketChanges.startDate;
                 context.MovieTickets.Update(movieTicket);
                 context.SaveChanges();
             }

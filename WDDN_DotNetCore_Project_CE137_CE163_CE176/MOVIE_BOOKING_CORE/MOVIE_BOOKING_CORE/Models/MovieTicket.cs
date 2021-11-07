@@ -29,7 +29,8 @@ namespace MOVIE_BOOKING_CORE.Models
         [Required]
         public int PlatinumPrice { get; set; }
 
-
+        [Required]
+        public DateTime startDate { get; set; }
 
     }
 

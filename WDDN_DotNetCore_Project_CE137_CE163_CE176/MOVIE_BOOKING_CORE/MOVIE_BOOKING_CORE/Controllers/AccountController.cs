@@ -66,7 +66,6 @@ namespace MOVIE_BOOKING_CORE.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
-
             if (ModelState.IsValid)
             {
                 var result = await signInManager.PasswordSignInAsync(model.username, model.password,model.rememberMe,false);

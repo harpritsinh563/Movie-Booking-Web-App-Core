@@ -16,6 +16,7 @@ namespace MOVIE_BOOKING_CORE.Models
         }
 
         public DbSet<MovieTicket> MovieTickets { get; set; }
+        public DbSet<MovieBooking> MovieBookings { get; set; }
 
     }
 }

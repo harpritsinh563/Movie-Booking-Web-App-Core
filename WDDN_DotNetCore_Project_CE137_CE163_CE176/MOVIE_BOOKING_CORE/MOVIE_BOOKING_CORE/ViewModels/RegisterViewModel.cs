@@ -19,6 +19,5 @@ namespace MOVIE_BOOKING_CORE.ViewModels
         [Display(Name ="Confirm Password")]
         [Compare("Password",ErrorMessage ="Password and confirmation password do not match")]
         public string ConfirmPassword { get; set; }
-
     }
 }
