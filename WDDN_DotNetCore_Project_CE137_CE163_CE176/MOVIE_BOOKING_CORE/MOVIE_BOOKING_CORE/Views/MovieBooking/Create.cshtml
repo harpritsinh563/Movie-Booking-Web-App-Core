@@ -3,26 +3,22 @@
 @{
         ViewData["Title"] = "Create";
 }
-
-<h1>Create</h1>
-
-<h4>MovieBooking</h4>
+<h4>Book Movie</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create" method="post" asp-controller="MovieBooking">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
+            <input type="hidden" asp-for="name" class="form-control" />
+            <input type="hidden" asp-for="silver_price" class="form-control" />
+            <input type="hidden" asp-for="gold_price" class="form-control" />
+            <input type="hidden" asp-for="platinum_price" class="form-control" />                                   
+            <p> Silver Price : ₹ @Model.silver_price <p> 
+            <p>Gold Price : ₹ @Model.gold_price </p>
+            <p>Platinum Price : ₹ @Model.platinum_price</p>          
             <div class="form-group">
-                <label asp-for="name" class="control-label"></label>
-                <input asp-for="name" class="form-control" />
-                <span asp-validation-for="name" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="ticketNo" class="control-label"></label>
-                <input asp-for="ticketNo" class="form-control" />
-                <span asp-validation-for="ticketNo" class="text-danger"></span>
+                <label asp-for="ticketType" class="control-label"></label>
+                <select asp-for="ticketType" asp-validation-for="ticketType" class="form-control" asp-items="ViewBag.ticketTypeList"></select>
             </div>
 
             <div class="form-group">
@@ -31,15 +27,14 @@
             </div>
 
             <div class="form-group">
-                <label asp-for="ticketType" class="control-label"></label>
-                <select asp-for="ticketType" asp-validation-for="ticketType" class="form-control" asp-items="ViewBag.ticketTypeList"></select>
-            </div>
-
-            <div class="form-group">
                 <label asp-for="showDate" class="control-label"></label>
                 <select asp-for="showDate" asp-validation-for="ticketType" class="form-control" asp-items="ViewBag.showDatesList"></select>
             </div>
-
+            <div class="form-group">
+                <label asp-for="ticketNo" class="control-label"></label>
+                <input asp-for="ticketNo" class="form-control" />
+                <span asp-validation-for="ticketNo" class="text-danger"></span>
+            </div>
 
             <div class="form-group">
                 <button type="submit" value="Create" class="btn btn-primary"> Book </button>
@@ -48,9 +43,6 @@
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

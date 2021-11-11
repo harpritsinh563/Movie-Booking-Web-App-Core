@@ -29,7 +29,9 @@ namespace MOVIE_BOOKING_CORE
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContextPool<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MovieBookingCore")));
-            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+            services.AddHttpContextAccessor();
+            services.AddControllers();
+            services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
             services.AddRazorPages();
             services.AddControllersWithViews();
             services.AddScoped<IMovieTicketRepository, SQLMovieTicketRepository>();
@@ -54,7 +56,7 @@ namespace MOVIE_BOOKING_CORE
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
-
+     
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapDefaultControllerRoute();

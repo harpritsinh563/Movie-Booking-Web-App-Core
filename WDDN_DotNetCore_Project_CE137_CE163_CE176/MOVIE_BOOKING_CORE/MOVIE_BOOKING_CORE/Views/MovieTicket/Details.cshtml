@@ -1,60 +1,33 @@
 ﻿@model MOVIE_BOOKING_CORE.Models.MovieTicket
+@inject SignInManager<AppUser> signInManager;
 
 @{
     ViewData["Title"] = "Details";
+    var photopath = "~/images/" + Model.MoviePoster;
 }
-
-<h1>Details</h1>
-
-<div>
-    <h4>MovieTicket</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.MovieName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.MovieName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.MovieDescription)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.MovieDescription)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.MoviePoster)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.MoviePoster)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.SilverPrice)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.SilverPrice)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.GoldPrice)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.GoldPrice)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.PlatinumPrice)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.PlatinumPrice)
-        </dd>
-
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.startDate)
-        </dd>
-    </dl>
+<div class="row justify-content-center m-1">
+    <div class="col-sm-8">
+        <div class="card">
+            <div class="card-header">
+                <h1>@Model.MovieName</h1>
+            </div>
+            <div class="card-body text-center">
+                <img style="width:100%;height:15vw;" src="@photopath" asp-append-version="true" />
+                <h4>@Model.MovieDescription</h4>
+            </div>
+            <div class="card-footer text-center">
+                <a asp-action="index" class="btn btn-primary">Back</a>
+                @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                {
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@Model.Id"> Delete </a>
+                }
+                else
+                {
+                    <a class="btn btn-success" asp-action="Book" asp-route-id="@Model.Id"> Book </a>
+                }
+            </div>
+        </div>
+    </div>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
 
-    <a class="btn btn-primary" asp-action="Book" asp-route-id="@Model.Id" > Book </a>
-</div>

@@ -40,15 +40,7 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.date)
         </dd>
-        @*<dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Ticket)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Ticket.MovieDescription)
-        </dd>*@
     </dl>
+    <a asp-action="Index" class="btn btn-primary" asp-controller="MovieTicket">Home</a>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+

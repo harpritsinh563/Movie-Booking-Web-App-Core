@@ -1,0 +1,65 @@
+﻿@model IQueryable<MovieBooking> 
+
+<h1>Your Bookings</h1>
+
+@if (Model.Any())
+{
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Movie Name
+            </th>
+            <th>
+                Show Date
+            </th>
+            <th>
+                Show Time
+            </th>
+            <th>
+                Ticket Type
+            </th>
+            <th>
+                Total Tickets 
+            </th>
+            <th>
+                Total Bill
+            </th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.showtime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ticketType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.total_tickets)
+
+            </td>
+            <td>
+                ₹ @Html.DisplayFor(modelItem => item.total)
+            </td>
+
+        </tr>
+        }
+    </tbody>
+</table>
+}
+else
+{
+    <h2>You have no bookings</h2>
+    <a asp-action="Index" asp-controller="MovieTicket" class="btn btn-primary mt-3">Show Movies</a>
+}

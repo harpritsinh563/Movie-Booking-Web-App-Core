@@ -4,15 +4,19 @@ using MOVIE_BOOKING_CORE.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MOVIE_BOOKING_CORE.ViewModels;
 using System;
+using Microsoft.AspNetCore.Identity;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MOVIE_BOOKING_CORE.Controllers
 {
-
+    [Authorize]
     public class MovieBookingController : Controller
     {
         private readonly IMovieBookingRepository _movieBookingRepo;
         private readonly IMovieTicketRepository _movieTicketRepo;
-
+        private readonly UserManager<AppUser> _userManager;
+       
         public static List<string> ticketType = new List<string>
         {
             "Silver",
@@ -21,19 +25,21 @@ namespace MOVIE_BOOKING_CORE.Controllers
         };
         public static List<string> showTime = new List<string> 
         { 
-            "10:00", 
-            "12:00", 
-            "14:00", 
-            "16:00", 
-            "18:00" 
+            "9AM-12PM",
+            "12PM-3PM",
+            "3PM-6PM", 
+            "6PM-9PM", 
+            "9PM-12AM" 
         };
 
 
 
-        public MovieBookingController(IMovieBookingRepository movieBookingRepo, IMovieTicketRepository movieticketrepo)
+        public MovieBookingController(IMovieBookingRepository movieBookingRepo, IMovieTicketRepository movieticketrepo, UserManager<AppUser> userManager)
         {
             _movieBookingRepo = movieBookingRepo;
             _movieTicketRepo = movieticketrepo;
+            _userManager = userManager;
+
         }
         public IActionResult Index()
         {
@@ -55,11 +61,15 @@ namespace MOVIE_BOOKING_CORE.Controllers
         [HttpGet]
         public IActionResult Create(int Id)
         {
-            
+            string userid = _userManager.GetUserId(HttpContext.User);
             MovieTicket Movie = _movieTicketRepo.GetMovieTicket(Id);
             TicketDetailsViewModel newMovie = new TicketDetailsViewModel();
             newMovie.name = Movie.MovieName;
             DateTime cDate = Movie.startDate;
+            newMovie.silver_price = Movie.SilverPrice;
+            newMovie.gold_price = Movie.GoldPrice;
+            newMovie.platinum_price = Movie.PlatinumPrice;
+
             String currDate = cDate.ToString("MM/dd/yyyy");
 
             List<string> showdates = new List<string>();
@@ -72,28 +82,19 @@ namespace MOVIE_BOOKING_CORE.Controllers
             ViewData["showDatesList"] = new SelectList(showdates);
             ViewData["TicketId"] = Id;
             ViewData["ticketTypeList"] = new SelectList(ticketType);
-            ViewData["showTimeList"] = new SelectList(showTime);
-            Console.WriteLine(newMovie.name+"<br>");
-            //viewdata["time"] = showtime;
-            //viewdata["tickettype"] = tickettype;
+            ViewData["showTimeList"] = new SelectList(showTime);       
             return View(newMovie);
         }
         
 
         [HttpPost]
-        public IActionResult Create(TicketDetailsViewModel movieBooking)
+        public async Task<IActionResult> CreateAsync(TicketDetailsViewModel movieBooking)
         {
-            Console.WriteLine("outside");
-            Console.WriteLine(movieBooking.name);
-            Console.WriteLine(movieBooking.showTime);
-            Console.WriteLine(movieBooking.ticketType);
-            Console.WriteLine(movieBooking.showDate);
-            Console.WriteLine(movieBooking.ticketNo);
+            var user = await _userManager.GetUserAsync(HttpContext.User);
 
 
             if (ModelState.IsValid)
             {
-                Console.WriteLine("Indise");
                 MovieBooking newmovieBooking = new MovieBooking();
                 newmovieBooking.name = movieBooking.name;
                 newmovieBooking.showtime = movieBooking.showTime;
@@ -101,75 +102,28 @@ namespace MOVIE_BOOKING_CORE.Controllers
                 newmovieBooking.ticketType = movieBooking.ticketType;
                 if(movieBooking.ticketType == "Silver")
                 {
-                    newmovieBooking.total = movieBooking.ticketNo * 110;
+                    newmovieBooking.total = movieBooking.ticketNo * movieBooking.silver_price;
                 }else if(movieBooking.ticketType == "Gold")
                 {
-                    newmovieBooking.total = movieBooking.ticketNo * 120;
+                    newmovieBooking.total = movieBooking.ticketNo * movieBooking.gold_price;
                 }
                 else
                 {
-                    newmovieBooking.total = movieBooking.ticketNo * 150;
-
+                    newmovieBooking.total = movieBooking.ticketNo * movieBooking.platinum_price;
                 }
-                Console.WriteLine(newmovieBooking.name);
-                Console.WriteLine(newmovieBooking.total);
-                Console.WriteLine(newmovieBooking.showtime);
-                Console.WriteLine(newmovieBooking.ticketType);
-                Console.WriteLine(newmovieBooking.date);
+                newmovieBooking.total_tickets = movieBooking.ticketNo;
 
+                newmovieBooking.AppUserId = _userManager.GetUserId(HttpContext.User);
+               
                 _movieBookingRepo.Add(newmovieBooking);
 
-                Console.WriteLine(newmovieBooking.Id);
-                Console.WriteLine(newmovieBooking);
+   
                 return RedirectToAction("details", new { Id = newmovieBooking.Id });
             }
             return View();
         }
-        [HttpGet]
-        public IActionResult Edit(int id)
-        {
-            MovieBooking movieBooking = _movieBookingRepo.GetMovieBooking(id);
-            //ViewData["TicketId"] = new SelectList(_movieBookingRepo.GetMovieTickets(), "Id", "name", movieBooking.TicketId);
-
-            return View(movieBooking);
-        }
-
-        [HttpPost]
-        public IActionResult Edit(MovieBooking model)
-        {
-            if (ModelState.IsValid)
-            {
-                MovieBooking movieBooking = _movieBookingRepo.GetMovieBooking(model.Id);
-                movieBooking.name = model.name;
-                movieBooking.showtime = model.showtime;
-                movieBooking.ticketType = model.ticketType;
-                movieBooking.total = model.total;
-                movieBooking.date = model.date;
-                MovieBooking updatedMovieBooking = _movieBookingRepo.Update(movieBooking);
-
-                return RedirectToAction("index");
-            }
-            return View(model);
-        }
-
-        [HttpGet]
-        public IActionResult Delete (int id)
-        {
-            MovieBooking movieBooking = _movieBookingRepo.GetMovieBooking(id);
-            if(movieBooking == null)
-            {
-                return NotFound();
-            }
-            return View(movieBooking);
-        }
-        [HttpPost,ActionName("Delete")]
-        public IActionResult DeleteConfirmed(int id)
-        {
-            var movieBooking = _movieBookingRepo.GetMovieBooking(id);
-            _movieBookingRepo.Delete(movieBooking.Id);
-
-            return RedirectToAction("index");
-        }
+       
+       
 
     }
 }

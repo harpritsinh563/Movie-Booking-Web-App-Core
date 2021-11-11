@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Jainil\\COLLEGE\\SEM_5\\MovieBooking_MVC\\WDDN_DotNetCore_Project_CE137_CE163_CE176\\MOVIE_BOOKING_CORE\\MOVIE_BOOKING_CORE\\MOVIE_BOOKING_CORE.csproj": {}
+    "D:\\DDUSEM5\\WDDN\\Core Project\\WDDN_DotNetCore_Project_CE137_CE163_CE176\\MOVIE_BOOKING_CORE\\MOVIE_BOOKING_CORE\\MOVIE_BOOKING_CORE.csproj": {}
   },
   "projects": {
-    "E:\\Jainil\\COLLEGE\\SEM_5\\MovieBooking_MVC\\WDDN_DotNetCore_Project_CE137_CE163_CE176\\MOVIE_BOOKING_CORE\\MOVIE_BOOKING_CORE\\MOVIE_BOOKING_CORE.csproj": {
+    "D:\\DDUSEM5\\WDDN\\Core Project\\WDDN_DotNetCore_Project_CE137_CE163_CE176\\MOVIE_BOOKING_CORE\\MOVIE_BOOKING_CORE\\MOVIE_BOOKING_CORE.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Jainil\\COLLEGE\\SEM_5\\MovieBooking_MVC\\WDDN_DotNetCore_Project_CE137_CE163_CE176\\MOVIE_BOOKING_CORE\\MOVIE_BOOKING_CORE\\MOVIE_BOOKING_CORE.csproj",
+        "projectUniqueName": "D:\\DDUSEM5\\WDDN\\Core Project\\WDDN_DotNetCore_Project_CE137_CE163_CE176\\MOVIE_BOOKING_CORE\\MOVIE_BOOKING_CORE\\MOVIE_BOOKING_CORE.csproj",
         "projectName": "MOVIE_BOOKING_CORE",
-        "projectPath": "E:\\Jainil\\COLLEGE\\SEM_5\\MovieBooking_MVC\\WDDN_DotNetCore_Project_CE137_CE163_CE176\\MOVIE_BOOKING_CORE\\MOVIE_BOOKING_CORE\\MOVIE_BOOKING_CORE.csproj",
-        "packagesPath": "C:\\Users\\jaini\\.nuget\\packages\\",
-        "outputPath": "E:\\Jainil\\COLLEGE\\SEM_5\\MovieBooking_MVC\\WDDN_DotNetCore_Project_CE137_CE163_CE176\\MOVIE_BOOKING_CORE\\MOVIE_BOOKING_CORE\\obj\\",
+        "projectPath": "D:\\DDUSEM5\\WDDN\\Core Project\\WDDN_DotNetCore_Project_CE137_CE163_CE176\\MOVIE_BOOKING_CORE\\MOVIE_BOOKING_CORE\\MOVIE_BOOKING_CORE.csproj",
+        "packagesPath": "C:\\Users\\shree\\.nuget\\packages\\",
+        "outputPath": "D:\\DDUSEM5\\WDDN\\Core Project\\WDDN_DotNetCore_Project_CE137_CE163_CE176\\MOVIE_BOOKING_CORE\\MOVIE_BOOKING_CORE\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\jaini\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\shree\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -87,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

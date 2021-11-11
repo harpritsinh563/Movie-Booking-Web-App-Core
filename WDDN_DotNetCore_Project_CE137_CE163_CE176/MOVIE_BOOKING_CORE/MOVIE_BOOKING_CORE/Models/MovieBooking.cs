@@ -23,11 +23,14 @@ namespace MOVIE_BOOKING_CORE.Models
         public string ticketType { get; set; }
 
         [Required]
-        public DateTime date { get; set; }
-        //public int TicketId { get; set; }
-        //public MovieTicket Ticket { get; set; }
-        /*
-         * userid form viewModels
-         */
+        public string date { get; set; }
+
+        [Required]
+        public int total_tickets { get; set; }
+
+        public string AppUserId { get; set; }
+        public  AppUser AppUser { get; set; }
+       
+
     }
 }

@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MOVIE_BOOKING_CORE.Models;
+using Microsoft.AspNetCore.Authorization;
+using MOVIE_BOOKING_CORE.ViewModels;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace MOVIE_BOOKING_CORE.Controllers
 {
@@ -11,34 +15,60 @@ namespace MOVIE_BOOKING_CORE.Controllers
     {
 
         private readonly IMovieTicketRepository _movieticketrepo;
+        private readonly IHostingEnvironment hostingEnvironment;
 
-        public MovieTicketController(IMovieTicketRepository movieticketrepo)
+        public MovieTicketController(IMovieTicketRepository movieticketrepo,IHostingEnvironment hostingEnvironment)
         {
             _movieticketrepo = movieticketrepo;
+            this.hostingEnvironment = hostingEnvironment;
         }
 
-
+        [Authorize]
         public IActionResult Index()
         {
             var model = _movieticketrepo.GetAllMovieTickets();
             return View(model);
         }
+
+        [Authorize(Roles="Admin")]
         [HttpGet]
         public ViewResult Create()
         {
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
-        public IActionResult Create(MovieTicket movieTicket)
+        public IActionResult Create(MovieTicketViewModel model)
         {
             if(ModelState.IsValid)
             {
-                MovieTicket new_movie_ticket = _movieticketrepo.Add(movieTicket);
+                string uniqueFilename = null;
+                if(model.MoviePoster!=null)
+                {
+                   string uploadFolder= Path.Combine(hostingEnvironment.WebRootPath,"images");
+                    uniqueFilename=Guid.NewGuid() + "_" + model.MoviePoster.FileName;
+                    string filepath = Path.Combine(uploadFolder, uniqueFilename);
+                    model.MoviePoster.CopyTo(new FileStream(filepath, FileMode.Create));                        
+                }
+
+                MovieTicket new_movie_ticket = new MovieTicket
+                {
+                    MovieName = model.MovieName,
+                    MovieDescription = model.MovieDescription,
+                    SilverPrice = model.SilverPrice,
+                    GoldPrice=model.GoldPrice,
+                    PlatinumPrice=model.PlatinumPrice,
+                    startDate=model.startDate,
+                    MoviePoster=uniqueFilename
+                };
+                _movieticketrepo.Add(new_movie_ticket);
+                //MovieTicket new_movie_ticket = _movieticketrepo.Add(movieTicket);
                 return RedirectToAction("details", new { id = new_movie_ticket.Id });
             }
             return View();
         }
+        [Authorize]
 
         public ViewResult Details(int Id)
         {
@@ -50,6 +80,7 @@ namespace MOVIE_BOOKING_CORE.Controllers
             }
             return View(movie_ticket);
         }
+        [Authorize]
 
         [HttpGet]
         public IActionResult Book(int id)
@@ -57,14 +88,15 @@ namespace MOVIE_BOOKING_CORE.Controllers
             return RedirectToAction("Create", "MovieBooking",new {Id = id });
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet]
-
         public ViewResult Edit(int Id)
         {
             MovieTicket movieTicket = _movieticketrepo.GetMovieTicket(Id);
             return View(movieTicket);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult Edit(MovieTicket MovieTicketChanges)
         {
@@ -86,6 +118,7 @@ namespace MOVIE_BOOKING_CORE.Controllers
             return View(MovieTicketChanges);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult Delete(int Id)
         {
@@ -97,6 +130,7 @@ namespace MOVIE_BOOKING_CORE.Controllers
             return View(movieTicket);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         public IActionResult DeleteConfirmed(int Id)
         {
