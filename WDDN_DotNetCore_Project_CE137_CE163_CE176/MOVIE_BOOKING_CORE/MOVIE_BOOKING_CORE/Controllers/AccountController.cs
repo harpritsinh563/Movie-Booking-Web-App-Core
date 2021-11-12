@@ -41,7 +41,7 @@ namespace MOVIE_BOOKING_CORE.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
-
+            
             if (ModelState.IsValid)
             {
                 var user = new AppUser

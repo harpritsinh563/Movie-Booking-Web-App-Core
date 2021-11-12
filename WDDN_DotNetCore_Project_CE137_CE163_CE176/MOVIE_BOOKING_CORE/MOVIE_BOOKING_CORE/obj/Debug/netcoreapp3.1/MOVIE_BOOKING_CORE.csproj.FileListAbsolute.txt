@@ -333,10 +333,7 @@ E:\Jainil\COLLEGE\SEM_5\MovieBooking_MVC\WDDN_DotNetCore_Project_CE137_CE163_CE1
 E:\Jainil\COLLEGE\SEM_5\MovieBooking_MVC\WDDN_DotNetCore_Project_CE137_CE163_CE176\MOVIE_BOOKING_CORE\MOVIE_BOOKING_CORE\obj\Debug\netcoreapp3.1\MOVIE_BOOKING_CORE.dll
 E:\Jainil\COLLEGE\SEM_5\MovieBooking_MVC\WDDN_DotNetCore_Project_CE137_CE163_CE176\MOVIE_BOOKING_CORE\MOVIE_BOOKING_CORE\obj\Debug\netcoreapp3.1\MOVIE_BOOKING_CORE.pdb
 E:\Jainil\COLLEGE\SEM_5\MovieBooking_MVC\WDDN_DotNetCore_Project_CE137_CE163_CE176\MOVIE_BOOKING_CORE\MOVIE_BOOKING_CORE\obj\Debug\netcoreapp3.1\MOVIE_BOOKING_CORE.genruntimeconfig.cache
-E:\Jainil\COLLEGE\SEM_5\MovieBooking_MVC\WDDN_DotNetCore_Project_CE137_CE163_CE176\MOVIE_BOOKING_CORE\MOVIE_BOOKING_CORE\obj\Debug\netcoreapp3.1\Razor\Views\MovieBooking\Index.cshtml.g.cs
 E:\Jainil\COLLEGE\SEM_5\MovieBooking_MVC\WDDN_DotNetCore_Project_CE137_CE163_CE176\MOVIE_BOOKING_CORE\MOVIE_BOOKING_CORE\obj\Debug\netcoreapp3.1\Razor\Views\MovieBooking\Create.cshtml.g.cs
-E:\Jainil\COLLEGE\SEM_5\MovieBooking_MVC\WDDN_DotNetCore_Project_CE137_CE163_CE176\MOVIE_BOOKING_CORE\MOVIE_BOOKING_CORE\obj\Debug\netcoreapp3.1\Razor\Views\MovieBooking\Edit.cshtml.g.cs
-E:\Jainil\COLLEGE\SEM_5\MovieBooking_MVC\WDDN_DotNetCore_Project_CE137_CE163_CE176\MOVIE_BOOKING_CORE\MOVIE_BOOKING_CORE\obj\Debug\netcoreapp3.1\Razor\Views\MovieBooking\Delete.cshtml.g.cs
 E:\Jainil\COLLEGE\SEM_5\MovieBooking_MVC\WDDN_DotNetCore_Project_CE137_CE163_CE176\MOVIE_BOOKING_CORE\MOVIE_BOOKING_CORE\obj\Debug\netcoreapp3.1\Razor\Views\MovieBooking\Details.cshtml.g.cs
 D:\DDUSEM5\WDDN\Core Project\WDDN_DotNetCore_Project_CE137_CE163_CE176\MOVIE_BOOKING_CORE\MOVIE_BOOKING_CORE\bin\Debug\netcoreapp3.1\appsettings.Development.json
 D:\DDUSEM5\WDDN\Core Project\WDDN_DotNetCore_Project_CE137_CE163_CE176\MOVIE_BOOKING_CORE\MOVIE_BOOKING_CORE\bin\Debug\netcoreapp3.1\appsettings.json
@@ -512,3 +509,8 @@ D:\DDUSEM5\WDDN\Core Project\WDDN_DotNetCore_Project_CE137_CE163_CE176\MOVIE_BOO
 D:\DDUSEM5\WDDN\Core Project\WDDN_DotNetCore_Project_CE137_CE163_CE176\MOVIE_BOOKING_CORE\MOVIE_BOOKING_CORE\obj\Debug\netcoreapp3.1\Razor\Views\Administration\EditRole.cshtml.g.cs
 D:\DDUSEM5\WDDN\Core Project\WDDN_DotNetCore_Project_CE137_CE163_CE176\MOVIE_BOOKING_CORE\MOVIE_BOOKING_CORE\obj\Debug\netcoreapp3.1\Razor\Views\Administration\EditUserInRole.cshtml.g.cs
 D:\DDUSEM5\WDDN\Core Project\WDDN_DotNetCore_Project_CE137_CE163_CE176\MOVIE_BOOKING_CORE\MOVIE_BOOKING_CORE\obj\Debug\netcoreapp3.1\Razor\Views\Account\ViewBookings.cshtml.g.cs
+E:\Jainil\COLLEGE\SEM_5\MovieBooking_MVC\WDDN_DotNetCore_Project_CE137_CE163_CE176\MOVIE_BOOKING_CORE\MOVIE_BOOKING_CORE\obj\Debug\netcoreapp3.1\Razor\Views\Account\ViewBookings.cshtml.g.cs
+E:\Jainil\COLLEGE\SEM_5\MovieBooking_MVC\WDDN_DotNetCore_Project_CE137_CE163_CE176\MOVIE_BOOKING_CORE\MOVIE_BOOKING_CORE\obj\Debug\netcoreapp3.1\Razor\Views\Administration\CreateRole.cshtml.g.cs
+E:\Jainil\COLLEGE\SEM_5\MovieBooking_MVC\WDDN_DotNetCore_Project_CE137_CE163_CE176\MOVIE_BOOKING_CORE\MOVIE_BOOKING_CORE\obj\Debug\netcoreapp3.1\Razor\Views\Administration\EditRole.cshtml.g.cs
+E:\Jainil\COLLEGE\SEM_5\MovieBooking_MVC\WDDN_DotNetCore_Project_CE137_CE163_CE176\MOVIE_BOOKING_CORE\MOVIE_BOOKING_CORE\obj\Debug\netcoreapp3.1\Razor\Views\Administration\EditUserInRole.cshtml.g.cs
+E:\Jainil\COLLEGE\SEM_5\MovieBooking_MVC\WDDN_DotNetCore_Project_CE137_CE163_CE176\MOVIE_BOOKING_CORE\MOVIE_BOOKING_CORE\obj\Debug\netcoreapp3.1\Razor\Views\Administration\ListRoles.cshtml.g.cs

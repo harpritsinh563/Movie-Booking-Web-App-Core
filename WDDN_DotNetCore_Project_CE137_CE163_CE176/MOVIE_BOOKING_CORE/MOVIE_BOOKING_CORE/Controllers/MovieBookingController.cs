@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace MOVIE_BOOKING_CORE.Controllers
 {
-    [Authorize]
+    [Authorize(Roles="User")]
     public class MovieBookingController : Controller
     {
         private readonly IMovieBookingRepository _movieBookingRepo;

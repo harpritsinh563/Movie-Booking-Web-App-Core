@@ -59,11 +59,10 @@ namespace MOVIE_BOOKING_CORE
      
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapDefaultControllerRoute();
-                endpoints.MapGet("/", async context =>
-                 {
-                     await context.Response.WriteAsync("MovieTicket Booking");
-                 });
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Account}/{action=Login}"
+                    );
             });
         }
     }
